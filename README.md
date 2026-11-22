@@ -284,9 +284,9 @@ Here $b$ is the body force per unit length, $P$ is the force applied at the end 
 
 Integrating twice and applying the boundary conditions gives the exact solution
 
-$$
-u(x) = -\frac{b^*\,x^2}{2} + (P^* + b^*L)\,x
-$$
+```math
+u(x) = -\frac{b^{*} x^{2}}{2} + \left(P^{*} + b^{*} L\right) x
+```
 
 <p align="center">
   <img src="Images/linear%20load%201d.png" alt="1D elasticity with constant body force" width="500">
