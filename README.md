@@ -52,7 +52,7 @@ For deformable bodies, Equation (1) must be supplemented by a **constitutive law
 For an isotropic hyper-elastic material, the free-energy function must be objective (independent of rigid-body motion). This requires it to depend on the deformation only through the invariants of the right Cauchy–Green deformation tensor $\mathbf{C}$:
 
 $$
-\Psi = \Psi\big(I_1(\mathbf{C}),\, I_2(\mathbf{C}),\, I_3(\mathbf{C})\big)
+\Psi = \Psi\big(I_1(\mathbf{C})\, I_2(\mathbf{C})\, I_3(\mathbf{C})\big)
 $$
 
 For compressible hyper-elastic materials, the energy must also grow without bound when the body is expanded infinitely or compressed to zero volume.
@@ -60,7 +60,7 @@ For compressible hyper-elastic materials, the energy must also grow without boun
 For a **compressible Mooney–Rivlin** material (with a quadratic volumetric penalty term), the free energy is
 
 $$
-\Psi = \frac{\mu_1}{2}\,(I_1 - 3) + \frac{\mu_2}{2}\,(I_2 - 3) + \frac{K_1}{2}\,(J - 1)^2
+\Psi = \frac{\mu_1}{2}\(I_1 - 3) + \frac{\mu_2}{2}\(I_2 - 3) + \frac{K_1}{2}\(J - 1)^2
 $$
 
 where $I_n$ are the invariants of $\mathbf{C}$ and $J = \det(\mathbf{F})$.
@@ -90,7 +90,7 @@ $$
 Both can be converted to the Cauchy stress by a push-forward operation:
 
 $$
-\boldsymbol{\sigma} = J^{-1}\,\mathbf{P}\,\mathbf{F}^{T} = J^{-1}\,\mathbf{F}\,\mathbf{S}\,\mathbf{F}^{T}
+\boldsymbol{\sigma} = J^{-1}\\mathbf{P}\\mathbf{F}^{T} = J^{-1}\\mathbf{F}\\mathbf{S}\\mathbf{F}^{T}
 $$
 
 > **Why use $\mathbf{P}$ in the network?**
@@ -137,7 +137,7 @@ The network takes the coordinate $x$ (or a set of basis-function features of $x$
 Since the network outputs $\mathbf{u}$ as a function of position, the kinematic and stress quantities are computed from it using automatic differentiation:
 
 $$
-\mathbf{u} \;\rightarrow\; \mathbf{F} \;\rightarrow\; \mathbf{C} \text{ or } \mathbf{B} \;\rightarrow\; I_1,\, I_2,\, J \;\rightarrow\; \mathbf{P} \text{ or } \boldsymbol{\sigma}
+\mathbf{u} \\rightarrow\ \mathbf{F} \\rightarrow\ \mathbf{C} \text{ or } \mathbf{B} \\rightarrow\ I_1,\, I_2,\, J \\rightarrow\ \mathbf{P} \text{ or } \boldsymbol{\sigma}
 $$
 
 with $\mathbf{F} = \mathbf{I} + \nabla_X \mathbf{u}$, $\mathbf{C} = \mathbf{F}^T\mathbf{F}$ and $\mathbf{B} = \mathbf{F}\mathbf{F}^T$.
@@ -156,7 +156,7 @@ Material form:
 
 $$
 \mathcal{L}_{PDE} = \mathrm{MSE}\big(\nabla_X \cdot \mathbf{P} + \mathbf{b}_0 - \rho_0\\ddot{\mathbf{u}}, \mathbf{0}\big)
-= \frac{1}{N_f}\sum_{i=1}^{N_f} \left\| \nabla_X \cdot \mathbf{P}(\mathbf{X}_i) + \mathbf{b}_0(\mathbf{X}_i) - \rho_0\,\ddot{\mathbf{u}}(\mathbf{X}_i) \right\|^2
+= \frac{1}{N_f}\sum_{i=1}^{N_f} \left\| \nabla_X \cdot \mathbf{P}(\mathbf{X}_i) + \mathbf{b}_0(\mathbf{X}_i) - \rho_0\\ddot{\mathbf{u}}(\mathbf{X}_i) \right\|^2
 $$
 
 ### Traction (Neumann) loss
@@ -171,7 +171,7 @@ Material form:
 
 $$
 \mathcal{L}_{traction} = \mathrm{MSE}\big(\mathbf{P} \cdot \mathbf{N},\ \boldsymbol{\tau}_0\big)
-= \frac{1}{N_t}\sum_{j=1}^{N_t} \left\| \mathbf{P}(\mathbf{X}_j)\,\mathbf{N}_j - \boldsymbol{\tau}_0(\mathbf{X}_j) \right\|^2
+= \frac{1}{N_t}\sum_{j=1}^{N_t} \left\| \mathbf{P}(\mathbf{X}_j)\\mathbf{N}_j - \boldsymbol{\tau}_0(\mathbf{X}_j) \right\|^2
 $$
 
 ### Dirichlet (displacement) loss
@@ -179,14 +179,14 @@ $$
 The same expression applies in both forms, since the constrained points are identified by their material coordinates:
 
 $$
-\mathcal{L}_{Dirichlet} = \mathrm{MSE}\big(\mathbf{u}(\mathbf{X}_d),\; \mathbf{u}_0\big)
+\mathcal{L}_{Dirichlet} = \mathrm{MSE}\big(\mathbf{u}(\mathbf{X}_d),\ \mathbf{u}_0\big)
 = \frac{1}{N_d}\sum_{k=1}^{N_d} \left\| \mathbf{u}(\mathbf{X}_k) - \mathbf{u}_0(\mathbf{X}_k) \right\|^2
 $$
 
 ### Total loss
 
 $$
-\mathcal{L}_{total} = \lambda_1\,\mathcal{L}_{PDE} + \lambda_2\,\mathcal{L}_{traction} + \lambda_3\,\mathcal{L}_{Dirichlet}
+\mathcal{L}_{total} = \lambda_1\\mathcal{L}_{PDE} + \lambda_2\\mathcal{L}_{traction} + \lambda_3\\mathcal{L}_{Dirichlet}
 $$
 
 ---
@@ -250,7 +250,7 @@ $$
 The loss function that was minimised is
 
 $$
-\mathcal{L} = \lambda_1\,\mathrm{MSE}\big(m\ddot{x} + c\dot{x} + kx,\; 0\big) + \lambda_2\,\mathrm{MSE}\big(x(0),\; 1\big) + \lambda_3\,\mathrm{MSE}\big(\dot{x}(0),\; 0\big)
+\mathcal{L} = \lambda_1\\mathrm{MSE}\big(m\ddot{x} + c\dot{x} + kx\ 0\big) + \lambda_2\\mathrm{MSE}\big(x(0)\ 1\big) + \lambda_3\,\mathrm{MSE}\big(\dot{x}(0)\ 0\big)
 $$
 
 with $m = 1$, $c = 4$ and $k = 400$.
@@ -430,8 +430,8 @@ The analytical solution for the thin balloon expansion problem is taken from Yan
 | $\mathbf{F}$ | Deformation gradient, $\mathbf{F} = \mathbf{I} + \nabla_X \mathbf{u}$ |
 | $\mathbf{C}$ | Right Cauchy–Green deformation tensor, $\mathbf{F}^T\mathbf{F}$ |
 | $\mathbf{B}$ | Left Cauchy–Green deformation tensor, $\mathbf{F}\mathbf{F}^T$ |
-| $\mathbf{E}$ | Green–Lagrange strain tensor, $\tfrac{1}{2}(\mathbf{C} - \mathbf{I})$ (bold; not to be confused with Young's modulus $E$) |
-| $J$ | Volume ratio, $\det(\mathbf{F})$; $J = 1$ for an incompressible material |
+| $\mathbf{E}$ | Green–Lagrange strain tensor, $\tfrac{1}{2}(\mathbf{C} - \mathbf{I})$ (not to be confused with Young's modulus $E$) |
+| $J$ | Volume ratio, $\det(\mathbf{F})$ $J = 1$ for an incompressible material |
 | $I_1,\, I_2,\, I_3$ | Principal invariants of $\mathbf{C}$ |
 | $\nabla$, $\nabla_X$ | Gradient with respect to spatial and material coordinates |
 
