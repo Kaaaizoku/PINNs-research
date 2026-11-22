@@ -485,5 +485,3 @@ The analytical solution for the thin balloon expansion problem is taken from Yan
 | $b$, $b^*$ | Body force per unit length of the bar, and its normalised value $b/(EA)$ |
 | $P^*$ | Normalised end force, $P/(EA)$ |
 | $b_0^*$ | Amplitude of the normalised sinusoidal body force |
-#   P I N N s - r e s e a r c h  
- 
