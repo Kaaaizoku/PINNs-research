@@ -250,7 +250,7 @@ $$
 The loss function that was minimised is
 
 $$
-\mathcal{L} = \lambda_1\\mathrm{MSE}\big(m\ddot{x} + c\dot{x} + kx\ 0\big) + \lambda_2\\mathrm{MSE}\big(x(0)\ 1\big) + \lambda_3\,\mathrm{MSE}\big(\dot{x}(0)\ 0\big)
+\mathcal{L} = \lambda_1\\mathrm{MSE}\big(m\ddot{x} + c\dot{x} + kx\ 0\big) + \lambda_2\\mathrm{MSE}\big(x(0)\ 1\big) + \lambda_3\\mathrm{MSE}\big(\dot{x}(0)\ 0\big)
 $$
 
 with $m = 1$, $c = 4$ and $k = 400$.
@@ -295,12 +295,12 @@ u(x) = -\frac{b^{*} x^{2}}{2} + \left(P^{*} + b^{*} L\right) x
   <em>Figure 7: Deformation response for a constant body force.</em>
 </p>
 
-### Case 2: non-linear body force $b^* = b_0^* \sin\!\left(\dfrac{\pi x}{L}\right)$
+### Case 2: non-linear body force $b^* = b_0^* \sin\left(\dfrac{\pi x}{L}\right)$
 
 The exact solution is
 
 $$
-u(x) = \frac{b_0^* L^2}{\pi^2}\,\sin\!\left(\frac{\pi x}{L}\right) + \left(P^* + \frac{b_0^* L}{\pi}\right)x
+u(x) = \frac{b_0^* L^2}{\pi^2}\\sin\\left(\frac{\pi x}{L}\right) + \left(P^* + \frac{b_0^* L}{\pi}\right)x
 $$
 
 <p align="center">
@@ -311,7 +311,7 @@ $$
 
 ### Observations
 
-The constant- $b^*$ case was solved easily. For the non-linear $b^*$, convergence took longer. Two remedies work well:
+The constant- b* case was solved easily. For the non-linear b*, convergence took longer. Two remedies work well:
 
 1. Adjust the loss weights $\lambda_i$ so that the individual loss terms are of a similar order of magnitude (this is the simplest to implement).
 2. Use a non-dimensionalised form of the equation.
@@ -320,7 +320,7 @@ The constant- $b^*$ case was solved easily. For the non-linear $b^*$, convergenc
 
 ## Benchmark: Burgers' Equation (Raissi et al.)
 
-The results of Raissi et al. were reproduced with our methodology. Burgers' equation was solved in both its **continuous** and **discrete** (time-stepping) forms.
+The results of Raissi et al. (Journal of Computational Physics, 2019) were reproduced with our methodology. Burgers' equation was solved in both its **continuous** and **discrete** (time-stepping) forms.
 
 ### Continuous form
 
