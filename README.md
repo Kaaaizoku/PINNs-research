@@ -149,13 +149,13 @@ The network is trained by minimising a weighted sum of three losses. Each loss i
 Spatial form:
 
 $$
-\mathcal{L}_{PDE} = \mathrm{MSE}\big(\nabla \cdot \boldsymbol{\sigma} + \mathbf{b} - \rho\,\ddot{\mathbf{u}},\; \mathbf{0}\big)
+\mathcal{L}_{PDE} = \mathrm{MSE}\big(\nabla \cdot \boldsymbol{\sigma} + \mathbf{b} - \rho\\ddot{\mathbf{u}}, \mathbf{0}\big)
 $$
 
 Material form:
 
 $$
-\mathcal{L}_{PDE} = \mathrm{MSE}\big(\nabla_X \cdot \mathbf{P} + \mathbf{b}_0 - \rho_0\,\ddot{\mathbf{u}},\; \mathbf{0}\big)
+\mathcal{L}_{PDE} = \mathrm{MSE}\big(\nabla_X \cdot \mathbf{P} + \mathbf{b}_0 - \rho_0\\ddot{\mathbf{u}}, \mathbf{0}\big)
 = \frac{1}{N_f}\sum_{i=1}^{N_f} \left\| \nabla_X \cdot \mathbf{P}(\mathbf{X}_i) + \mathbf{b}_0(\mathbf{X}_i) - \rho_0\,\ddot{\mathbf{u}}(\mathbf{X}_i) \right\|^2
 $$
 
@@ -164,13 +164,13 @@ $$
 Spatial form:
 
 $$
-\mathcal{L}_{traction} = \mathrm{MSE}\big(\boldsymbol{\sigma} \cdot \mathbf{n},\; \boldsymbol{\tau}\big)
+\mathcal{L}_{traction} = \mathrm{MSE}\big(\boldsymbol{\sigma} \cdot \mathbf{n},\ \boldsymbol{\tau}\big)
 $$
 
 Material form:
 
 $$
-\mathcal{L}_{traction} = \mathrm{MSE}\big(\mathbf{P} \cdot \mathbf{N},\; \boldsymbol{\tau}_0\big)
+\mathcal{L}_{traction} = \mathrm{MSE}\big(\mathbf{P} \cdot \mathbf{N},\ \boldsymbol{\tau}_0\big)
 = \frac{1}{N_t}\sum_{j=1}^{N_t} \left\| \mathbf{P}(\mathbf{X}_j)\,\mathbf{N}_j - \boldsymbol{\tau}_0(\mathbf{X}_j) \right\|^2
 $$
 
