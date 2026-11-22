@@ -36,13 +36,14 @@
 ### Governing equations
 
 The balance of linear momentum must be satisfied by every solid body, deformable or rigid:
-
-$$
-\nabla \cdot \boldsymbol{\sigma} + \mathbf{b} = \rho \ddot{\mathbf{u}}, \qquad
-\boldsymbol{\sigma} \cdot \mathbf{n} = \boldsymbol{\tau} \ \text{on } \Gamma_N, \qquad
-\mathbf{u}(\mathbf{x}_d) = \mathbf{u}_0 \ \text{on } \Gamma_D
-\tag{1}
-$$
+```math
+\begin{aligned}
+\nabla \cdot \boldsymbol{\sigma} + \mathbf{b} &= \rho \ddot{\mathbf{u}} \\
+\boldsymbol{\sigma} \cdot \mathbf{n} &= \boldsymbol{\tau} \quad \text{on } \Gamma_N \\
+\mathbf{u}(\mathbf{x}_d) &= \mathbf{u}_0 \quad \text{on } \Gamma_D
+\end{aligned}
+\qquad (1)
+```
 
 For deformable bodies, Equation (1) must be supplemented by a **constitutive law**, which relates the stress developed in the body to its deformation.
 
@@ -310,7 +311,7 @@ $$
 
 ### Observations
 
-The constant-$b^*$ case was solved easily. For the non-linear $b^*$, convergence took longer. Two remedies work well:
+The constant- $b^*$ case was solved easily. For the non-linear $b^*$, convergence took longer. Two remedies work well:
 
 1. Adjust the loss weights $\lambda_i$ so that the individual loss terms are of a similar order of magnitude (this is the simplest to implement).
 2. Use a non-dimensionalised form of the equation.
